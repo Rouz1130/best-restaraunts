@@ -86,7 +86,7 @@ namespace Dinning
     };
 
 
-        Get["dish/delete/{id}"] = parameters => {
+        Get["/dish/delete/{id}"] = parameters => {
           Dish SelectedStore = Dish.Find(parameters.id);
           return View["dishes_delete.cshtml", SelectedStore];
         };
