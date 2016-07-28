@@ -53,6 +53,26 @@ namespace Dinning
       return View["store.cshtml", model];
     };
 
+    Get["/store/edit/{id}"] = parameters => {
+      Dish selectDishes = Dish.Find(parameters.id);
+      return View["stores_edit.cshtml", selectDishes];
+    };
+
+    Patch["/store/edit/{id}"] = parameters => {
+      Store selectedStore = Store.Find(parameters.id);
+      selectedStore.Update(Request.Form["store-name"]);
+      return View["success.cshtml"];
+    };
+
+    Get["store/delete/{id}"] = parameters => {
+      Store SelectedStore = Store.Find(parameters.id);
+      return View["store_delete.cshtml", SelectedStore];
+    };
+
+    Delete["/store/delete/{id}"] = parameters => {
+      Store selectedStore = Store.Find(parameters.id);
+      return View["success.cshtml"];
+    };
   }
   }
 }

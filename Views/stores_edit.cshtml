@@ -1,0 +1,8 @@
+<form action= "/store/edit/@Model.GetId()" method= "post">
+  <input type = "hidden" name= "_method" value = "PATCH">
+  <input name = "store-id" type= "hidden" value= "@Model.GetId()">
+  <label for="store-name">New Store Name</label>
+  <input id="store-name" name = "store-name" type="text">
+  <button type="submit">Submit</button>
+</form>
+<h4><a href="/">Return</button></h4>

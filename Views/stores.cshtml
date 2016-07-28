@@ -7,6 +7,9 @@
   @foreach (var store in Model)
   {
     <li><a href="/stores/@store.GetId()">@store.GetName()</a></li>
+    <li><a href="/store/edit/@store.GetId()">Edit</a></li>
+    <li><a href="/store/delete/@store.GetId()">Delete</a></li>
+
   }
 </ul>
 <a href="/stores/new">Add new store</a>
