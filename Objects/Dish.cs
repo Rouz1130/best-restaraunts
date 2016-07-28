@@ -168,10 +168,7 @@ namespace Dinning
        }
        return foundDish;
      }
-      //end of find method
-
+     //end of find method
+}
 
   }
-
-
-}
