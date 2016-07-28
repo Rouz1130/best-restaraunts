@@ -1,0 +1,16 @@
+<h1>Add a new dish</h1>
+<form action="/dishes/new" method="post">
+  <label for="dish-name">Dish name:</label>
+  <input id="dish-name" name="dish-name" type="text">
+  <label for="dish-price">Dish Price:</label>
+  <input id="dish-price" name="dish-price" type="text">
+  <select name="store-id">
+    @foreach (var store in Model)
+    {
+      <option value="@store.GetId()">@store.GetName()</option>
+    }
+  </select>
+  <button type="submit">Add new dish</button>
+</form>
+<p><a href="/">Back home</a></p>
+<p><a href="/dishes">View all dishes</a></p>

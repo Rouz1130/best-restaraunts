@@ -166,7 +166,7 @@ namespace Dinning
       SqlConnection conn = DB.Connection();
       conn.Open();
 
-      SqlCommand cmd = new SqlCommand("SELECT * FROM tasks WHERE store_id = @StoreId;", conn);
+      SqlCommand cmd = new SqlCommand("SELECT * FROM dish WHERE store_id = @StoreId;", conn);
       SqlParameter storeIdParameter = new SqlParameter();
       storeIdParameter.ParameterName = "@StoreId";
       storeIdParameter.Value = this.GetId();

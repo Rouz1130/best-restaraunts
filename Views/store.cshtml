@@ -1,0 +1,17 @@
+<h2>Here are all the dishes in this store:</h2>
+
+@if (@Model["dishes"].Count == 0)
+{
+  <p>No dishes have been added yet!</p>
+}
+else
+{
+  <ol>
+    @foreach (var dish in @Model["dishes"])
+    {
+      <li>@dish.GetName()</li>
+    }
+  </ol>
+}
+<p><a href="/dishes/new">Add a new dish</a></p>
+<p><a href="/">Return to Main Page</a></p>
