@@ -132,14 +132,43 @@ namespace Dinning
           conn.Close();
 
      }
+     public static Dish Find(int Id)
+     {
+       SqlConnection conn = DB.Connection();
+       conn.Open();
 
+       SqlCommand cmd = new SqlCommand("SELECT * FROM dish WHERE id = @dishId;", conn);
+       SqlParameter DishParameter = new SqlParameter();
+       DishParameter.ParameterName = "@dishId";
+       DishParameter.Value = Id;
+       cmd.Parameters.Add(DishParameter);
+       SqlDataReader rdr = cmd.ExecuteReader();
 
+       string foundName=null;
+       int foundPrice=0;
+       int foundStoreId=0;
+       int foundId=0;
 
+       while(rdr.Read())
+       {
+         foundId=rdr.GetInt32(0);
+         foundName=rdr.GetString(1);
+         foundPrice=rdr.GetInt32(2);
+         foundStoreId=rdr.GetInt32(3);
+       }
+       Dish foundDish= new Dish(foundName, foundPrice, foundStoreId, foundId);
 
-
-
-
-
+       if (rdr!= null)
+       {
+         rdr.Close();
+       }
+       if (conn != null)
+       {
+         conn.Close();
+       }
+       return foundDish;
+     }
+      //end of find method
 
 
   }

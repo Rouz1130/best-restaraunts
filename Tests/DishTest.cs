@@ -43,10 +43,10 @@ namespace Dinning
         onedish.Add(firstDish);
         firstDish.Save();
         List<Dish> allDishes=Dish.GetAll();
-        Console.WriteLine(allDishes[0].GetName());
-        Console.WriteLine(allDishes[0].GetPrice());
-        Console.WriteLine(allDishes[0].GetStoreId());
-        Console.WriteLine(allDishes[0].GetId());
+        // Console.WriteLine(allDishes[0].GetName());
+        // Console.WriteLine(allDishes[0].GetPrice());
+        // Console.WriteLine(allDishes[0].GetStoreId());
+        // Console.WriteLine(allDishes[0].GetId());
         Assert.Equal(onedish,allDishes);
       }
       [Fact]
@@ -68,8 +68,15 @@ namespace Dinning
       oneDish.Save();
 
       //Act
-      Dish foundDish = Dish.Find(oneDish.GetId());
-
+      Dish foundDish  = Dish.Find(oneDish.GetId());
+      Console.WriteLine(foundDish.GetName());
+      Console.WriteLine(foundDish.GetPrice());
+      Console.WriteLine(foundDish.GetStoreId());
+      Console.WriteLine(foundDish.GetId());
+      Console.WriteLine(oneDish.GetName());
+      Console.WriteLine(oneDish.GetPrice());
+      Console.WriteLine(oneDish.GetStoreId());
+      Console.WriteLine(oneDish.GetId());
       //Assert
       Assert.Equal(oneDish, foundDish);
     }
