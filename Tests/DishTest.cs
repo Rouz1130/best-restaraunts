@@ -81,5 +81,35 @@ namespace Dinning
       Assert.Equal(oneDish, foundDish);
     }
 
+    [Fact]
+    public void Test_UpdateDishesInDatabase()
+    {
+      Dish myDish = new Dish("cfdfgdgd", 2 ,5);
+      myDish.Save();
+      myDish.Update("q");
+      string result = myDish.GetName();
+
+      Assert.Equal("q", result);
+    }
+
+    [Fact]
+    public void Test_DeleteOneStore_true()
+    {
+
+
+      Dish firstStoreDish = new Dish("burger",87,2);
+      firstStoreDish.Save();
+
+      Dish secondStoreDsih= new Dish("toco",56,9);
+      secondStoreDsih.Save();
+
+      firstStoreDish.Delete();
+
+
+      List<Dish> resultDish=Dish.GetAll();
+      List<Dish> afterDeleteOneStoreDish= new List<Dish> {secondStoreDsih};
+
+      Assert.Equal(afterDeleteOneStoreDish,resultDish);
+    }
   }
 }

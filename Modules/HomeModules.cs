@@ -73,6 +73,28 @@ namespace Dinning
       Store selectedStore = Store.Find(parameters.id);
       return View["success.cshtml"];
     };
+
+    Get["/dishes/edit/{id}"] = parameters => {
+      Dish selectDishes = Dish.Find(parameters.id);
+      return View["dishes_edit.cshtml", selectDishes];
+    };
+
+    Patch["/dishes/edit/{id}"] = parameters => {
+      Dish selectedStore = Dish.Find(parameters.id);
+      selectedStore.Update(Request.Form["dish-name"]);
+      return View["success.cshtml"];
+    };
+
+
+        Get["dish/delete/{id}"] = parameters => {
+          Dish SelectedStore = Dish.Find(parameters.id);
+          return View["dishes_delete.cshtml", SelectedStore];
+        };
+
+        Delete["/dish/delete/{id}"] = parameters => {
+          Dish selectedDish = Dish.Find(parameters.id);
+          return View["success.cshtml"];
+        };
   }
   }
 }

@@ -169,6 +169,58 @@ namespace Dinning
        return foundDish;
      }
      //end of find method
+     public void Update(string name)
+     {
+       SqlConnection conn = DB.Connection();
+       conn.Open();
+
+       SqlCommand cmd = new SqlCommand("UPDATE dish SET name = @name output inserted.name WHERE id =@dishId;", conn);
+       SqlParameter DishNameParameter = new SqlParameter();
+       DishNameParameter.ParameterName = "@name";
+       DishNameParameter.Value = name;
+
+       SqlParameter DishIdParameter = new SqlParameter();
+       DishIdParameter.ParameterName = "@dishId";
+       DishIdParameter.Value = this.GetId();
+
+       cmd.Parameters.Add(DishNameParameter);
+       cmd.Parameters.Add(DishIdParameter);
+
+       SqlDataReader rdr = cmd.ExecuteReader();
+
+       while(rdr.Read())
+       {
+         this._name = rdr.GetString(0);
+       }
+
+       if(rdr !=null)
+       {
+         rdr.Close();
+       }
+       if(conn!=null)
+       {
+         conn.Close();
+       }
+     }
+
+     public void Delete()
+     {
+       SqlConnection conn = DB.Connection();
+       conn.Open();
+       SqlCommand cmd = new SqlCommand (" DELETE FROM dish WHERE id =@DishId;", conn);
+
+       SqlParameter dishIdParameter = new SqlParameter();
+       dishIdParameter.ParameterName = "@DishId";
+       dishIdParameter.Value=this.GetId();
+       Console.WriteLine(this.GetId());
+       cmd.Parameters.Add(dishIdParameter);
+       cmd.ExecuteNonQuery();
+       if (conn !=null)
+       {
+         conn.Close();
+       }
+     }
+
 }
 
   }

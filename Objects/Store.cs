@@ -200,7 +200,7 @@ namespace Dinning
       SqlConnection conn = DB.Connection();
       conn.Open();
 
-      SqlCommand cmd = new SqlCommand("UPDATE store SET name =@StoreName output inserted.name WHERE id =@StoreId ",conn);
+      SqlCommand cmd = new SqlCommand("UPDATE store SET name =@StoreName output inserted.name WHERE id =@StoreId ;",conn);
       SqlParameter StoreNameParameter = new SqlParameter();
       StoreNameParameter.ParameterName = "@StoreName";
       StoreNameParameter.Value = Name;
